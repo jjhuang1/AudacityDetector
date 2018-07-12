@@ -16,16 +16,15 @@ fun main(args:Array<String>) {
     var program = "audacity"
 
     //find the path to the Downloads directory
-    if (os.contains("WIN")){
-        path = "${System.getenv("USERPROFILE")} + /Downloads"
-    }
-    else if (os.contains("MAC")){
-        path = System.getProperty("user.home") + "/Downloads"
+    
+    if (os.contains("WIN") || os.contains("MAC")){
+        path = System.getProperty("user.home")+ "${File.separator}Downloads"
     }
     else { //Linux OS
         path = System.getProperty("user.home")
     }
-    println("File is in ${path}")
+
+   println("File is in ${path}")
 
     //create and record the take file
     try {
@@ -123,6 +122,9 @@ fun getCurrStatus(os: String, first: Boolean):Int{
         }
         return 1
 }
+
+
+
 
 
 
