@@ -58,7 +58,7 @@ fun main(args:Array<String>) {
 
         }
         catch (e:Exception) {
-            println("Error opening ${program}")
+            println("Error getting status of ${program}")
             e.printStackTrace()
         }
     }
