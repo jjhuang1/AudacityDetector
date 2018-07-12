@@ -85,7 +85,8 @@ fun getCurrStatus(os: String, first: Boolean):Int{
         status_file = "./findstatus_LINUX.sh"
     }
 
-    //execute the appropriate shell executable fil
+    /*execute the appropriate shell executable file to find currently running
+      processes on the system and filter according to Audacity*/
     val audacityPB = ProcessBuilder(status_file)
     val audacityProcess = audacityPB.start()
 
@@ -104,9 +105,10 @@ fun getCurrStatus(os: String, first: Boolean):Int{
             }
             s = stdin.readLine()
         }
-
+        
         if (os.contains("MAC")){
             if (!first){
+                //if Audacity is not a currently running process
                 if (prcs[0].equals("0")){
                     return 0
                 }
@@ -114,6 +116,7 @@ fun getCurrStatus(os: String, first: Boolean):Int{
             return 1
         }
         else{
+            //if Audacity is not a currently running process
             if (prcs[0].equals("0")){
                 return 0
             }
