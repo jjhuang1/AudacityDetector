@@ -91,36 +91,28 @@ fun getCurrStatus(os: String, first: Boolean):Int{
 
     //load the output of the shell executable
     val stdin = BufferedReader(InputStreamReader(audacityProcess.getInputStream()))
-    var prcs = arrayOf("0", "0")
+    var prcs = 0
 
-        var s = stdin.readLine()
+    var s = stdin.readLine()
 
-        while(s != null){
-            if (s.contains("grep Audacity.app")){
-                prcs[1] = s
-            }
-            else {
-                prcs[0] = s
-            }
-            s = stdin.readLine()
-        }
+    while(s != null){
+       if (!s.contains("grep Audacity.app")){
+            prcs = 1
+       }
+       s = stdin.readLine()
+    }
         
-        if (os.contains("MAC")){
-            if (!first){
-                //if Audacity is not a currently running process
-                if (prcs[0].equals("0")){
-                    return 0
-                }
-            }
-            return 1
-        }
-        else{
-            //if Audacity is not a currently running process
-            if (prcs[0].equals("0")){
-                return 0
-            }
+     if (os.contains("MAC")){
+        if (!first){
+            //return the status 
+            return prcs
         }
         return 1
+     }
+     else{
+         //return the status
+         return prcs
+     }
 }
 
 
