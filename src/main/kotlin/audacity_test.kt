@@ -17,7 +17,7 @@ fun main(args:Array<String>) {
 
     //find the path to the Downloads directory
     if (os.contains("WIN")){
-        path = "${System.getenv("DOWNLOADS")}"
+        path = "${System.getenv("USERPROFILE")} + /Downloads"
     }
     else if (os.contains("MAC")){
         path = System.getProperty("user.home") + "/Downloads"
