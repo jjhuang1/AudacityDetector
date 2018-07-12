@@ -36,6 +36,7 @@ fun main(args:Array<String>) {
         try{
             //determines and executes the appropriate command to open Audacity
             if (os.contains("WIN")){
+                //need to fix: Windows does not recognize start command for external apps
                 val process = ProcessBuilder("start", "${program}", "${path}/${filename}")
                 process.start()
             }
